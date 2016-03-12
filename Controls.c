@@ -40,7 +40,7 @@ void initializeRobot()
   // Place code here to sinitialize servos to starting positions.
   // Sensors are automatically configured and setup by ROBOTC. They may need a brief time to stabilize.
 	clearDebugStream();
-  return;
+	return;
 }
 
 
@@ -90,29 +90,26 @@ bool grabberClosed = true;
 
 task main()
 {
-  initializeRobot();
+	initializeRobot();
 
-  waitForStart();   // wait for start of tele-op phase
+	waitForStart();   // wait for start of tele-op phase
 
-  while (true)
-  {
+	while (true)
+	{
 		getJoystickSettings(joystick);
-	  ///////////////////////////////////////////////////////////
-	  ///////////////////////////////////////////////////////////
-	  ////                                                   ////
-	  ////      Add your robot specific tele-op code here.   ////
-	  ////                                                   ////
-	  ///////////////////////////////////////////////////////////
-	  ///////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////
+		////                                                   ////
+		////      Add your robot specific tele-op code here.   ////
+		////                                                   ////
+		///////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////
 
-    // Insert code to have servos and motors respond to joystick and button values.
+		// Insert code to have servos and motors respond to joystick and button values.
 
-    // Look in the ROBOTC samples folder for programs that may be similar to what you want to perform.
-    // You may be able to find "snippets" of code that are similar to the functions that you want to
-    // perform.
-
-
-
+		// Look in the ROBOTC samples folder for programs that may be similar to what you want to perform.
+		// You may be able to find "snippets" of code that are similar to the functions that you want to
+		// perform.
 		int left  = joystick.joy1_y1;
 		int right = joystick.joy1_y2;
 
@@ -123,42 +120,42 @@ task main()
 		writeDebugStreamLine(buf);
 		// */
 
-  	if (abs(left) > 25) {
-  		motor[motorLeft] = -(left-sgn(left)*25);
-  	} else {
-  		motor[motorLeft] = 0;
-  	}
+		if (abs(left) > 25) {
+			motor[motorLeft] = -(left-sgn(left)*25);
+		} else {
+			motor[motorLeft] = 0;
+		}
 
-  	if (abs(right) > 25) {
-  		motor[motorRight] = (right-sgn(right)*25);
-  	} else {
-  		motor[motorRight] = 0;
-  	}
+		if (abs(right) > 25) {
+			motor[motorRight] = (right-sgn(right)*25);
+		} else {
+			motor[motorRight] = 0;
+		}
 
-  	if (joy1Btn(8)) {
-  		motor[motorUpDown] = 50;
-  	} else if (joy1Btn(6)) {
-  		motor[motorUpDown] = -50;
-  	} else {
-  		motor[motorUpDown] = 0;
-  	}
+		if (joy1Btn(8)) {
+			motor[motorUpDown] = 50;
+		} else if (joy1Btn(6)) {
+			motor[motorUpDown] = -50;
+		} else {
+			motor[motorUpDown] = 0;
+		}
 
-  	if (joy1Btn(3)) {
-  		motor[motorGrab] = 50;
-  	} else if (joy1Btn(1)) {
-  		motor[motorGrab] = -50;
-  	} else {
-  		motor[motorGrab] = 0;
-  	}
+		if (joy1Btn(3)) {
+			motor[motorGrab] = 50;
+		} else if (joy1Btn(1)) {
+			motor[motorGrab] = -50;
+		} else {
+			motor[motorGrab] = 0;
+		}
 
-  	if (joy1Btn(5)) {
-  		writeDebugStreamLine("Open");
-  		motor[motorNet] = 50;
-  	} else if (joy1Btn(7)) {
-  		writeDebugStreamLine("Close");
-  		motor[motorNet] = -50;
-  	} else {
-  		motor[motorNet] = 0;
-  	}
-  }
+		if (joy1Btn(5)) {
+			writeDebugStreamLine("Open");
+			motor[motorNet] = 50;
+		} else if (joy1Btn(7)) {
+			writeDebugStreamLine("Close");
+			motor[motorNet] = -50;
+		} else {
+			motor[motorNet] = 0;
+		}
+	}
 }
